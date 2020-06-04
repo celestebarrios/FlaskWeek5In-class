@@ -6,7 +6,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 #Import from Flask Mail
-from flask_mail import Mail,Message
+from flask_mail import Mail, Message
+
+#import for Flask Login
+from flask_login import LoginManager
 
 # Create flask app variable
 app = Flask(__name__)
@@ -16,6 +19,10 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 mail = Mail(app)
-from may_blog import routes, models
+#Login Config
+login=LoginManager(app)
+login.login_view= 'login' #Specify what page to load for Non-Authenticated Users
 
+
+from may_blog import routes, models
 
